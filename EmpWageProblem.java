@@ -4,11 +4,9 @@ class EmpWageProblem {
 
 	public static final int IS_PART_TIME = 1;
         public static final int IS_FULL_TIME = 2;
-        public static final int EMP_RATE_PER_HOUR = 20;
-	public static final int NUM_OF_WORKING_DAYS = 20;
-	public static final int MAX_HRS_IN_MONTH = 100 ;
 
-        public static int computeEmpWage() {
+        public static int computeEmpWage(String company,int EMP_RATE_PER_HOUR,
+					int NUM_OF_WORKING_DAYS, int MAX_HRS_PER_MONTH) {
                 //Welcome Message//
                 System.out.println("Welcome TO Employee Wage Computation Program");
 
@@ -17,7 +15,7 @@ class EmpWageProblem {
 		int TOTAL_EMP_HOURS = 0;
 		int TOTAL_WORKING_DAYS = 0;
 
-		while (TOTAL_EMP_HOURS <= MAX_HRS_IN_MONTH &&
+		while (TOTAL_EMP_HOURS <= MAX_HRS_PER_MONTH &&
 			TOTAL_WORKING_DAYS < NUM_OF_WORKING_DAYS){
 			TOTAL_WORKING_DAYS++;
                 int empCheck = (int) Math.floor(Math.random() * 10) % 3;
@@ -47,6 +45,7 @@ class EmpWageProblem {
 	}
 
 	public static void main(String[] args) {
-		computeEmpWage();
+		computeEmpWage("DMart", 20, 20, 100);
+		computeEmpWage("Reliance", 40, 20, 100);
 	}
 }
