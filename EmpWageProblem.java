@@ -1,15 +1,27 @@
 
 
-class EmpWageProblem {
+public class EmpWageProblem {
 
 	public static final int IS_PART_TIME = 1;
         public static final int IS_FULL_TIME = 2;
 
-        public static int computeEmpWage(String company,int EMP_RATE_PER_HOUR,
-					int NUM_OF_WORKING_DAYS, int MAX_HRS_PER_MONTH) {
-                //Welcome Message//
-                System.out.println("Welcome TO Employee Wage Computation Program");
+	private final String company;
+	private final int EMP_RATE_PER_HOUR;
+	private final int NUM_OF_WORKING_DAYS;
+	private final int MAX_HRS_PER_MONTH;
+	private int TOTAL_EMP_WAGE;
 
+
+
+        public EmpWageProblem(String company,int EMP_RATE_PER_HOUR,
+					int NUM_OF_WORKING_DAYS, int MAX_HRS_PER_MONTH) {
+		this.company = company;
+		this.EMP_RATE_PER_HOUR = EMP_RATE_PER_HOUR;
+		this.NUM_OF_WORKING_DAYS = NUM_OF_WORKING_DAYS;
+		this.MAX_HRS_PER_MONTH = MAX_HRS_PER_MONTH;
+	}
+
+	public void computeEmpWage() {
 
                 int EMP_HOURS = 0;
 		int TOTAL_EMP_HOURS = 0;
@@ -39,13 +51,19 @@ class EmpWageProblem {
 							"EMPLOYEE_HOURS: " + EMP_HOURS);
 
                 }
-		int TOTAL_EMP_WAGE = TOTAL_EMP_HOURS * EMP_RATE_PER_HOUR;
-		System.out.println("Total Employee Wage: " + TOTAL_EMP_WAGE);
-		return TOTAL_EMP_WAGE;
+		TOTAL_EMP_WAGE = TOTAL_EMP_HOURS * EMP_RATE_PER_HOUR;
+
+	}
+	public String toString() {
+		return "Total Employee Wage FOr Company: " +company+ " is: " + TOTAL_EMP_WAGE;
 	}
 
 	public static void main(String[] args) {
-		computeEmpWage("DMart", 20, 20, 100);
-		computeEmpWage("Reliance", 40, 20, 100);
+		EmpWageProblem dMart = new EmpWageProblem("DMart", 20, 20, 100);
+		EmpWageProblem reliance = new EmpWageProblem("Reliance", 40, 20, 100);
+		dMart.computeEmpWage();
+		System.out.println(dMart);
+		reliance.computeEmpWage();
+		System.out.println(reliance);
 	}
 }
